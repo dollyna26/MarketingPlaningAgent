@@ -1,0 +1,11 @@
+crewai
+langchain
+langchain-core
+langchain-groq
+openai
+pydantic
+python-dotenv
+requests
+streamlit
+uvicorn
+fastapi
