@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: marketing-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: marketing-agent
+  template:
+    metadata:
+      labels:
+        app: marketing-agent
+    spec:
+      containers:
+      - name: marketing-agent
+        image: dollynasahu26/marketing-agent:latest
+        ports:
+        - containerPort: 8000
+        env:
+        - name: GROQ_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: groq-secret
+              key: GROQ_API_KEY
+        - name: OPENAI_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: groq-secret
+              key: OPENAI_API_KEY
